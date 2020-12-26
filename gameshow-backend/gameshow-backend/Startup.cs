@@ -1,3 +1,4 @@
+using gameshow_backend.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -26,12 +27,19 @@ namespace gameshow_backend
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-
+            services.AddCors(options => {
+                options.AddPolicy("CORSPolicy", policy => policy.WithOrigins("http://localhost:4200")
+                .AllowCredentials()
+                .AllowAnyHeader()
+                .AllowAnyMethod());
+            });
+            services.AddScoped(typeof(IPushAPI), typeof(PushAPI)); 
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "gameshow_backend", Version = "v1" });
             });
+            services.AddSignalR();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -43,7 +51,7 @@ namespace gameshow_backend
                 app.UseSwagger();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "gameshow_backend v1"));
             }
-
+            app.UseCors("CORSPolicy");
             app.UseHttpsRedirection();
 
             app.UseRouting();
@@ -53,6 +61,7 @@ namespace gameshow_backend
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+                endpoints.MapHub<PushAPI>("/push");
             });
         }
     }
