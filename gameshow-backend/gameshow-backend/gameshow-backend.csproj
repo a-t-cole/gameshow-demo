@@ -15,4 +15,8 @@
     <Folder Include="Data\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\gameshow-core\gameshow-core.csproj" />
+  </ItemGroup>
+
 </Project>

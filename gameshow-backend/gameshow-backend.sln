@@ -3,7 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30804.86
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "gameshow-backend", "gameshow-backend\gameshow-backend.csproj", "{A5E91CED-5AA9-49CF-B8DF-0723505D8D61}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "gameshow-backend", "gameshow-backend\gameshow-backend.csproj", "{A5E91CED-5AA9-49CF-B8DF-0723505D8D61}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuestionBuilder", "QuestionBuilder\QuestionBuilder.csproj", "{173BE993-C4F6-49E3-BE4D-369FE48BF59C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "gameshow-core", "gameshow-core\gameshow-core.csproj", "{D5227A6C-C9F3-4556-8A8F-CD3AE956DAAF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +19,14 @@ Global
 		{A5E91CED-5AA9-49CF-B8DF-0723505D8D61}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A5E91CED-5AA9-49CF-B8DF-0723505D8D61}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A5E91CED-5AA9-49CF-B8DF-0723505D8D61}.Release|Any CPU.Build.0 = Release|Any CPU
+		{173BE993-C4F6-49E3-BE4D-369FE48BF59C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{173BE993-C4F6-49E3-BE4D-369FE48BF59C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{173BE993-C4F6-49E3-BE4D-369FE48BF59C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{173BE993-C4F6-49E3-BE4D-369FE48BF59C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D5227A6C-C9F3-4556-8A8F-CD3AE956DAAF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D5227A6C-C9F3-4556-8A8F-CD3AE956DAAF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D5227A6C-C9F3-4556-8A8F-CD3AE956DAAF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D5227A6C-C9F3-4556-8A8F-CD3AE956DAAF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
