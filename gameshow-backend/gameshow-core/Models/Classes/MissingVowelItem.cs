@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace gameshow_backend.Models.Classes
+namespace gameshow_core.Models.Classes
 {
     public class MissingVowelItem
     {
