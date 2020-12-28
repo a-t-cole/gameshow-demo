@@ -14,9 +14,9 @@ namespace gameshow_core.BusinessLogic
         {
             
         };
-        public DeserializationHelper(ILoggerFactory loggerFactory) 
+        public DeserializationHelper(ILogger logger) 
         {
-            this._logger = loggerFactory.CreateLogger(nameof(DeserializationHelper));   
+            this._logger = logger;   
         }
         public T Deserialize<T>(string json)
         {

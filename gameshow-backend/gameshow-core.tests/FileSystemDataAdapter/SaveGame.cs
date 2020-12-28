@@ -22,8 +22,8 @@ namespace gameshow_core.tests.FileSystemDataAdapter
         {
             using (var testEnv = new BaseFileSystemTest()) 
             {
-                var loggerFactory = Substitute.For<ILoggerFactory>(); 
-                var adapter = new gameshow_core.BusinessLogic.FileSystemDataAdapter(testEnv.tempFolder, new DeserializationHelper(loggerFactory),loggerFactory );
+                var logger = Substitute.For<ILogger>(); 
+                var adapter = new gameshow_core.BusinessLogic.FileSystemDataAdapter(testEnv.tempFolder, new DeserializationHelper(logger),logger );
 
                 var game = new Game() { Id = 1 };
                 adapter.SaveGame(game);

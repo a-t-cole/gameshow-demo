@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace gameshow_core.Models
+namespace gameshow_core.Models.Classes
 {
     public class WallGroup
     {

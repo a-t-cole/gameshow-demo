@@ -1,5 +1,4 @@
-﻿using gameshow_backend.BusinessLogic;
-using gameshow_core.Models;
+﻿using gameshow_core.Models;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -14,24 +13,35 @@ namespace gameshow_core.BusinessLogic
     {
         private readonly string _dataFolder;
         private readonly IDeserializationHelper _deserializationHelper;
-        private readonly ILogger _logger; 
-        public FileSystemDataAdapter(string dataFolder, IDeserializationHelper deserializationHelper, ILoggerFactory loggerFactory) 
+        private readonly ILogger _logger;
+
+        public FileSystemDataAdapter(IConfigProvider configProvider, IDeserializationHelper deserializationHelper, ILogger logger) 
         {
-            this._deserializationHelper = deserializationHelper; 
+            var folder = configProvider.GetDataFolder();
+            ValidateDataFolder(folder);
+            this._dataFolder = folder;
+            this._deserializationHelper = deserializationHelper;
+            this._logger = logger;
+        }
+        public FileSystemDataAdapter(string dataFolder, IDeserializationHelper deserializationHelper, ILogger logger) 
+        {
+            ValidateDataFolder(dataFolder);
+            this._dataFolder = dataFolder;
+            this._logger = logger;
+            this._deserializationHelper = deserializationHelper;
+        }
+
+        private void ValidateDataFolder(string dataFolder) 
+        {
             if (string.IsNullOrWhiteSpace(dataFolder))
             {
                 throw new ArgumentException(nameof(dataFolder));
             }
             else if (!Directory.Exists(dataFolder))
             {
-                if(dataFolder != "UnitTest")
+                if (dataFolder != "UnitTest")
                     throw new Exception($"Directory {dataFolder} does not exist.");
             }
-            else 
-            {
-                this._dataFolder = dataFolder;
-            }
-            this._logger = loggerFactory.CreateLogger(nameof(FileSystemDataAdapter));
         }
 
         public virtual IEnumerable<Game> GetAllGames()

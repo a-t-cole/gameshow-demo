@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using gameshow_core.Models.Classes;
 
-namespace gameshow_core.Models
+namespace gameshow_core.Models.Rounds
 {
     public class WallRound
     {

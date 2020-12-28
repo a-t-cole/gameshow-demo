@@ -16,7 +16,7 @@ namespace gameshow_core.tests.FileSystemDataAdapter
         private readonly BusinessLogic.FileSystemDataAdapter _dataAdapter;
         public GetNextGameId() 
         {
-            _dataAdapter = Substitute.ForPartsOf<BusinessLogic.FileSystemDataAdapter>("UnitTest", Substitute.For<IDeserializationHelper>(), Substitute.For<ILoggerFactory>()); 
+            _dataAdapter = Substitute.ForPartsOf<BusinessLogic.FileSystemDataAdapter>("UnitTest", Substitute.For<IDeserializationHelper>(), Substitute.For<ILogger>()); 
 
         }
         [Fact]

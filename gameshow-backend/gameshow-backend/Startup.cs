@@ -1,4 +1,5 @@
 using gameshow_backend.Services;
+using gameshow_core.BusinessLogic;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -27,12 +28,17 @@ namespace gameshow_backend
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+
             services.AddCors(options => {
                 options.AddPolicy("CORSPolicy", policy => policy.WithOrigins("http://localhost:4200")
                 .AllowCredentials()
                 .AllowAnyHeader()
                 .AllowAnyMethod());
             });
+            services.AddSingleton<ILogger>(x => new LoggerFactory().CreateLogger("BusinessLogic"));
+            services.AddSingleton(typeof(IConfigProvider), typeof(ConfigProvider));
+            services.AddSingleton(typeof(IDeserializationHelper), typeof(DeserializationHelper));
+            services.AddSingleton(typeof(IDataAdapter), typeof(FileSystemDataAdapter));
             services.AddScoped(typeof(IPushAPI), typeof(PushAPI)); 
             services.AddControllers();
             services.AddSwaggerGen(c =>
