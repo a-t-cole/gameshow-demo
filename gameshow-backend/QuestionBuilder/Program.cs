@@ -11,7 +11,7 @@ namespace QuestionBuilder
     {
         public static void Main(string[] args)
         {
-            const string _dataFolder = "";
+            const string _dataFolder = @"C:\Dev\gameshow-demo\gameshow-backend\Data\Games";
             ILogger logger = new LoggerFactory().CreateLogger("QuestionBuilder");
             IDataAdapter dataAdapter = new FileSystemDataAdapter(_dataFolder, new DeserializationHelper(logger), logger);
             var builder = new DummyDataBuilder();

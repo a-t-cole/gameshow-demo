@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 namespace gameshow_backend.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("[controller]/[action]")]
     public class DebugController : ControllerBase
     {
         private readonly IPushAPI _pushApi; 

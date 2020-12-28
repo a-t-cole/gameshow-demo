@@ -39,7 +39,8 @@ namespace gameshow_backend
             services.AddSingleton(typeof(IConfigProvider), typeof(ConfigProvider));
             services.AddSingleton(typeof(IDeserializationHelper), typeof(DeserializationHelper));
             services.AddSingleton(typeof(IDataAdapter), typeof(FileSystemDataAdapter));
-            services.AddScoped(typeof(IPushAPI), typeof(PushAPI)); 
+            services.AddScoped(typeof(IPushAPI), typeof(PushAPI));
+            services.AddSingleton(typeof(GameManager)); 
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
@@ -66,7 +67,10 @@ namespace gameshow_backend
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapControllers();
+                //endpoints.MapControllers();
+                endpoints.MapControllerRoute(name: "DefaultApi",
+                pattern: "api/{controller}/{action}/{id?}"
+                );
                 endpoints.MapHub<PushAPI>("/push");
             });
         }
