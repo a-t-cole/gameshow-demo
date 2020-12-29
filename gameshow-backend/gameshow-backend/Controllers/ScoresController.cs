@@ -27,7 +27,9 @@ namespace gameshow_backend.Controllers
         [HttpGet]
         public TeamScores GetScores()
         {
-            return new TeamScores(this._gameManager);
+            var scores = new TeamScores(_gameManager);
+            _pushAPI.PushObject(scores, "SCORE_UPDATE");
+            return scores;
         }
         [HttpPut]
         public TeamScores AdjustScore(int adjustment, TeamType team)
@@ -41,7 +43,9 @@ namespace gameshow_backend.Controllers
                     _gameManager.Team2Score += adjustment;
                     break;
             }
-            return new TeamScores(_gameManager);
+            var scores =  new TeamScores(_gameManager);
+            _pushAPI.PushObject(scores, "SCORE_UPDATE");
+            return scores;
         }
 
         [HttpPost]

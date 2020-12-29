@@ -32,7 +32,7 @@ export class PushService implements OnInit, OnDestroy{
       this._hubConnection.start()
       .then(() => {
         for(let method of this._methods){
-          this._hubConnection.on(method, (user, message, test) => {
+          this._hubConnection.on(method, (message, user, test) => {
             if(message){
               this.MessageReceived.emit(new GenericKeyValuePair(method, message));
             }
