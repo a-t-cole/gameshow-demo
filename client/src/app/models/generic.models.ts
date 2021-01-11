@@ -12,3 +12,11 @@ export class GenericKeyValuePair<K,V> implements IGenericKeyValuePair<K, V>{
     Key: K;
     Value: V;
 }
+
+export interface StringDictionary<T>{
+    [index: string] : T; 
+}
+
+export interface IntDictionary<T>{
+    [index: number] : T; 
+}
