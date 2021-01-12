@@ -9,14 +9,16 @@ export abstract class DummyData{
       let group: WallGroup = {
         Connection: `Connection Group ${i}`, 
         Items: [], 
-        IsAnswered: false
+        IsAnswered: false, 
+        GroupId: i
       }; 
       for(let j = 0; j < 4; j++){
         group.Items.push({
           ImageURL: '', 
           Name: `Group: ${i}-${j}`, 
           Postition: j, 
-          IsSelected: false
+          IsSelected: false, 
+          GroupId: i
         })
       }
       result.push(group);

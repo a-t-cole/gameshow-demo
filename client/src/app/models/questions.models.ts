@@ -10,6 +10,7 @@ export interface ConnectionItem {
 }
 export interface WallConnectionItem extends ConnectionItem{
   IsSelected: boolean; 
+  GroupId: number;
 }
 
 export enum ConnectionType {
@@ -34,7 +35,7 @@ export interface MissingVowelCategory {
 export interface WallGroup extends BaseQuestion {
   Items: WallConnectionItem[];
   Connection: string;
-
+  GroupId: number; 
 }
 
 export interface ConnectionRound {

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { DummyData } from 'src/app/dummydata.helper';
+import { CodeHelper } from 'src/app/helper';
 import { WallConnectionItem, WallGroup } from 'src/app/models/questions.models';
 
 @Component({
@@ -14,11 +15,14 @@ export class WallroundComponent implements OnInit {
   private _selectedCount: number = 0;
   public remainingLives: number = Infinity; 
   public wallFrozen: boolean = false; 
+  public wallItems: WallConnectionItem[] = [];
   constructor(private activeRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.wall = this.loadWall();
+    this.wallItems = this.getWallItems(this.wall);
   }
+
   loadWall() : WallGroup[]{
     return DummyData.getWallGroup(); 
   }
@@ -27,8 +31,11 @@ export class WallroundComponent implements OnInit {
     if(item.IsSelected){
       this._selectedCount +=1; 
       if(this._selectedCount == 4){
-        if(!this.validateSelection(this.wall) && this.remainingLives < Infinity){
+        let correctAnswer = this.validateSelection(this.wall);
+        if(!correctAnswer && this.remainingLives < Infinity){
           this.remainingLives -= 1; 
+        }else if(correctAnswer){
+          this.unshuffleGroup(item.GroupId, this.wallItems);
         } 
         if(this.remainingLives == 0){
           this.wallFrozen = true; 
@@ -40,6 +47,7 @@ export class WallroundComponent implements OnInit {
       this._selectedCount -= 1; 
     }
   }
+
 
   validateSelection(wall: WallGroup[]): boolean{
     let correctAnswer: boolean = false; 
@@ -67,4 +75,22 @@ export class WallroundComponent implements OnInit {
       w.Items.forEach(x => x.IsSelected = false);
     }
   }
+  getWallItems(wall: WallGroup[]): WallConnectionItem[] {
+    let result = [];
+    for(let group of wall){
+      result.push(...group.Items);
+    }
+    return CodeHelper.shuffle(result);
+  }
+  unshuffleGroup(groupId: number, wallItems: WallConnectionItem[]) : WallConnectionItem[] {
+    let indicies: number[];  
+    for(let item of wallItems){
+      if(item.GroupId == groupId){
+
+      }
+    }
+    return wallItems; 
+  }
+
+
 }

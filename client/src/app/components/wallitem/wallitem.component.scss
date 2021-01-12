@@ -1,0 +1,24 @@
+@import "/src/app/styles/variables";
+
+
+.group{
+  color: $color-white; 
+   &1{
+    background-color:  #B44B81;  
+   }
+   &2{
+    background-color: #53AC87; 
+   }
+   &3{
+    background-color: #6841BE; 
+   }
+   &4{
+    background-color: #9DC13E; 
+   }
+}
+.ungrouped{
+  background-color: #A7B6E6; 
+}
+.selected{
+  background-color: darken( #A7B6E6, 20%);
+}

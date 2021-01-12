@@ -7,11 +7,13 @@ import { AppComponent } from './app.component';
 import { CommonModule } from '@angular/common';
 import { ToastrModule } from 'ngx-toastr';
 import { WallroundComponent } from './components/wallround/wallround.component';
+import { WallitemComponent } from './components/wallitem/wallitem.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    WallroundComponent
+    WallroundComponent,
+    WallitemComponent
   ],
   imports: [
     BrowserModule,

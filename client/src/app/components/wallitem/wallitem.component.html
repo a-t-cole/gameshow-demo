@@ -1,0 +1,15 @@
+<ng-container *ngIf="item">
+  <div class="d-flex flex-row justify-content-center" [ngClass]="getStyles()">
+    <ng-container *ngIf="!item.ImageURL">
+      {{item.Name}}
+    </ng-container>
+    <ng-container *ngIf="item.ImageURL">
+      <div class="d-flex flex-column align-content-center">
+        <img src="{{item.Image.URL}}"/>
+        <div>
+          {{item.Name}}
+        </div>
+      </div>
+    </ng-container>
+  </div>
+</ng-container>
