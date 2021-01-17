@@ -9,14 +9,15 @@ import { WallConnectionItem } from 'src/app/models/questions.models';
 export class WallitemComponent implements OnInit {
 
   @Input() item: WallConnectionItem
-  @Input() forceBackground: number = 0; 
+  @Input() forceBackground: number = -1; 
   constructor() { }
 
   ngOnInit(): void {
+    console.log(this.item); 
   }
   getStyles(): string{
     let result: string = 'ungrouped';
-    if(this.forceBackground){
+    if(this.forceBackground > -1){
       return `group${this.forceBackground.toString()}`; 
     }
     if(this.item.IsSelected){

@@ -16,6 +16,7 @@ export class WallroundComponent implements OnInit {
   public remainingLives: number = Infinity; 
   public wallFrozen: boolean = false; 
   public wallItems: WallConnectionItem[] = [];
+  public completeGroups: WallConnectionItem[] = []; 
   constructor(private activeRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
@@ -35,7 +36,7 @@ export class WallroundComponent implements OnInit {
         if(!correctAnswer && this.remainingLives < Infinity){
           this.remainingLives -= 1; 
         }else if(correctAnswer){
-          this.unshuffleGroup(item.GroupId, this.wallItems);
+          this.handleCompleteGroup(item.GroupId); 
         } 
         if(this.remainingLives == 0){
           this.wallFrozen = true; 
@@ -47,6 +48,7 @@ export class WallroundComponent implements OnInit {
       this._selectedCount -= 1; 
     }
   }
+
 
 
   validateSelection(wall: WallGroup[]): boolean{
@@ -82,14 +84,9 @@ export class WallroundComponent implements OnInit {
     }
     return CodeHelper.shuffle(result);
   }
-  unshuffleGroup(groupId: number, wallItems: WallConnectionItem[]) : WallConnectionItem[] {
-    let indicies: number[];  
-    for(let item of wallItems){
-      if(item.GroupId == groupId){
-
-      }
-    }
-    return wallItems; 
+  handleCompleteGroup(groupId: number) {
+    this.completeGroups.push(...this.wallItems.filter(x => x.GroupId == groupId));
+    this.wallItems = this.wallItems.filter(x => x.GroupId != groupId);
   }
 
 

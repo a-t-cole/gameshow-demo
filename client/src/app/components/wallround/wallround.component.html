@@ -1,3 +1,9 @@
 <ng-container *ngIf="wall">
-
+  <ng-container *ngFor="let c of completeGroups">
+    <oc-wallItem [item]="c" [forceBackground]="c.GroupId"></oc-wallItem>
+  </ng-container>
+  <ng-container *ngFor="let c of wallItems">
+    {{c | json}}
+    <oc-wallItem [item]="c"></oc-wallItem>
+  </ng-container>
 </ng-container>

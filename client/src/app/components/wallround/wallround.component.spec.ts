@@ -1,4 +1,5 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { RouterTestingModule } from '@angular/router/testing';
 import { DummyData } from 'src/app/dummydata.helper';
 import { WallroundComponent } from './wallround.component';
 
@@ -9,6 +10,7 @@ describe('WallroundComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      imports: [RouterTestingModule ], 
       declarations: [ WallroundComponent ]
     })
     .compileComponents();
@@ -25,15 +27,10 @@ describe('WallroundComponent', () => {
   });
   it('should unshuffle a group', () => {
     let wallItems = component.getWallItems(DummyData.getWallGroup()); 
-       
-    let sorted = component.unshuffleGroup(3, wallItems);
-    for(let i = 0; i< sorted.length; i++){
-      if(i<4){
-        expect(sorted[i].GroupId).toBe(3);
-      }else{
-        expect(sorted[i].GroupId).not.toBe(3); 
-      }
-    }
+    component.wallItems = wallItems;
+    component.handleCompleteGroup(1);
+    expect(component.wallItems.every(x => x.GroupId != 1)).toBeTrue(); 
+    expect(component.completeGroups.every(x => x.GroupId == 1)).toBeTrue(); 
     
   });
 });
