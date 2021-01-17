@@ -13,11 +13,11 @@ export class AppComponent implements OnInit{
     
   }
   ngOnInit(): void {
-    this.pushSvc.startConnection();
-    this.pushSvc.MessageReceived.subscribe(x => {
-      if(x){
-        this.notifySvc.toastInfo(x.Value);
-      }
-    })
+    //this.pushSvc.startConnection();
+    //this.pushSvc.MessageReceived.subscribe(x => {
+    //  if(x){
+    //    this.notifySvc.toastInfo(x.Value);
+    //  }
+    //});
   }
 }
