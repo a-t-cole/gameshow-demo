@@ -1,21 +1,31 @@
 <h2>
 Wall Round
 </h2>
-<oc-test></oc-test>
+<div class="frozenOverlay" *ngIf="wallFrozen">
+
+</div>
 <ng-container>
   <div>
     Complete: 
   </div>
-  <ng-container *ngFor="let c of completeGroups">
-  </ng-container>
+  <section>
+    <ng-container *ngFor="let g of completeGroups">
+      <ng-container *ngFor="let c of g.Items">
+        <div class="gridItem"><oc-wall-item  [Item]="c"></oc-wall-item></div>
+      </ng-container>
+    </ng-container>
+  </section>
   <div>
     Uncomplete
   </div>
   <section>
     <ng-container *ngFor="let w of wallItems" class="">
-      <!-- <oc-test [Name]="w.Name"></oc-test> -->
-      
-      <div class="gridItem"><oc-wall-item [Item]="w"></oc-wall-item></div>
+      <div class="gridItem" (click)="onItemSelect(w)"><oc-wall-item  [Item]="w"></oc-wall-item></div>
     </ng-container>
   </section>
+<ng-container *ngIf="remainingLives <= 3">
+  <div>
+    Lives: {{remainingLives}}
+  </div>
+</ng-container>
 </ng-container>

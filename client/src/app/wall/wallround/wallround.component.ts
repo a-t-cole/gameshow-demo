@@ -16,30 +16,32 @@ export class WallroundComponent implements OnInit {
   public remainingLives: number = Infinity; 
   public wallFrozen: boolean = false; 
   public wallItems: WallConnectionItem[] = [];
-  public completeGroups: WallConnectionItem[] = []; 
+  public completeGroups: WallGroup[] = []; 
   constructor(private activeRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.wall = this.loadWall();
     this.wallItems = this.getWallItems(this.wall);
-    this.completeGroups = Object.assign(this.wallItems, {});
+    this.completeGroups = []; 
   }
 
   loadWall() : WallGroup[]{
     return DummyData.getWallGroup(); 
   }
-  onItemtap(item: WallConnectionItem){
+  onItemSelect(item: WallConnectionItem){
     item.IsSelected = !item.IsSelected
     if(item.IsSelected){
-      this._selectedCount +=1; 
+       this._selectedCount +=1; 
       if(this._selectedCount == 4){
         let correctAnswer = this.validateSelection(this.wall);
         if(!correctAnswer && this.remainingLives < Infinity){
-          this.remainingLives -= 1; 
-        }else if(correctAnswer){
+            this.remainingLives -= 1; 
+        }
+        else if(correctAnswer){
           this.handleCompleteGroup(item.GroupId); 
         } 
         if(this.remainingLives == 0){
+          this.clearSelection(this.wall);
           this.wallFrozen = true; 
         }else{
           this.clearSelection(this.wall); 
@@ -61,7 +63,7 @@ export class WallroundComponent implements OnInit {
       if(w.IsAnswered){
         continue; 
       }
-      if(w.Items.map(x => x.IsSelected).length == 4){
+      if(w.Items.map(x => x.IsSelected).every(y => y)){
         //They have all 4 items selected. 
         w.IsAnswered = true; 
         correctAnswer = true; 
@@ -77,6 +79,7 @@ export class WallroundComponent implements OnInit {
       }
       w.Items.forEach(x => x.IsSelected = false);
     }
+    this._selectedCount = 0; 
   }
   getWallItems(wall: WallGroup[]): WallConnectionItem[] {
     let result = [];
@@ -86,7 +89,10 @@ export class WallroundComponent implements OnInit {
     return CodeHelper.shuffle(result);
   }
   handleCompleteGroup(groupId: number) {
-    this.completeGroups.push(...this.wallItems.filter(x => x.GroupId == groupId));
+    this.completeGroups.push(...this.wall.filter(x => x.GroupId == groupId));
+    if(this.completeGroups.length ==2){
+      this.remainingLives = 3; 
+    }
     this.wallItems = this.wallItems.filter(x => x.GroupId != groupId);
   }
 
