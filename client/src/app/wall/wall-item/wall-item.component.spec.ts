@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { WallitemComponent } from './wallitem.component';
+import { WallItemComponent } from './wall-item.component';
 
-describe('WallitemComponent', () => {
-  let component: WallitemComponent;
-  let fixture: ComponentFixture<WallitemComponent>;
+describe('WallItemComponent', () => {
+  let component: WallItemComponent;
+  let fixture: ComponentFixture<WallItemComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ WallitemComponent ]
+      declarations: [ WallItemComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(WallitemComponent);
+    fixture = TestBed.createComponent(WallItemComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

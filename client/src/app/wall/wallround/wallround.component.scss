@@ -1,0 +1,17 @@
+*{margin:0;}
+
+.gridItem {
+    float: left;
+    //height: 20vw;
+    margin: 2px;
+    width: 23.5%;
+}
+.gridItem:nth-child(4n-3){
+    margin-left:0;
+}
+.gridItem:nth-child(4n){
+    margin-right:0;
+}
+section{
+    margin:0 20px;
+}

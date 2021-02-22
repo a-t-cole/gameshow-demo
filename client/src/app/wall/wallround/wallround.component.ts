@@ -22,6 +22,7 @@ export class WallroundComponent implements OnInit {
   ngOnInit(): void {
     this.wall = this.loadWall();
     this.wallItems = this.getWallItems(this.wall);
+    this.completeGroups = Object.assign(this.wallItems, {});
   }
 
   loadWall() : WallGroup[]{

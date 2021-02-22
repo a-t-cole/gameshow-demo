@@ -4,7 +4,8 @@ import { WallroundComponent } from "./wallround/wallround.component";
 
 const routes: Routes = [
     {
-        path: 'test', 
+        path: '', 
+        pathMatch:'full',
         component: WallroundComponent
     }
 ]; 

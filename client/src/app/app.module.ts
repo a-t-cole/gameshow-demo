@@ -6,9 +6,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CommonModule } from '@angular/common';
 import { ToastrModule } from 'ngx-toastr';
-import { WallroundComponent } from './wall/wallround/wallround.component';
-import { WallitemComponent } from './wall/wallitem/wallitem.component';
-import { WallModule } from './wall/wall.module';
+
 
 @NgModule({
   declarations: [

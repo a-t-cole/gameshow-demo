@@ -1,9 +1,21 @@
-<ng-container *ngIf="wall">
+<h2>
+Wall Round
+</h2>
+<oc-test></oc-test>
+<ng-container>
+  <div>
+    Complete: 
+  </div>
   <ng-container *ngFor="let c of completeGroups">
-    <oc-wallItem [item]="c" [forceBackground]="c.GroupId"></oc-wallItem>
   </ng-container>
-  <ng-container *ngFor="let c of wallItems">
-    {{c | json}}
-    <oc-wallItem [item]="c"></oc-wallItem>
-  </ng-container>
+  <div>
+    Uncomplete
+  </div>
+  <section>
+    <ng-container *ngFor="let w of wallItems" class="">
+      <!-- <oc-test [Name]="w.Name"></oc-test> -->
+      
+      <div class="gridItem"><oc-wall-item [Item]="w"></oc-wall-item></div>
+    </ng-container>
+  </section>
 </ng-container>

@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { WallroundComponent } from './wall/wallround/wallround.component';
 
 const routes: Routes = [
   {
@@ -11,10 +10,6 @@ const routes: Routes = [
     path: '',
     pathMatch: 'full',
     redirectTo: '/wall'
-  },
-  {
-    path:'**',
-    redirectTo: ''
   }
 ];
 
